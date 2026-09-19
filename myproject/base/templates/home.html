@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="main-container">
+    <div class="section-title">
+        <span>
+            // FEATURED . READ OF THE WEEK
+        </span>
+    </div>
+
+    <article class="featured-card">
+        <div class="featured-image">
+            <img src="{% static article.image %}" alt="">
+        </div>
+        <div class="featured-content">
+            <h1>{{ article.title }}</h1>
+            <p class="description">{{ article.des|truncatechars:250 }}</p>
+        </div>
+
+        <div class="article-footer">
+            <div class="author">
+                <img src="{% static article.user_img %}" alt="">
+                <div class="author-info">
+                    <strong>{{ article.name }}</strong>
+                    <span> {{ article.date}}, {{ article.up_time }}</span>
+                </div>
+            </div>
+
+            <a href="{% url 'features' %}" class="read-button">Read more</a>
+        </div>
+
+    </article>
+
+</div>
+
+{% endblock %}

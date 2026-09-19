@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <div class="read-container">
+
+        <div class="read-image-container">
+            <img src="{% static article.image %}" alt="">
+        </div>
+
+        <div class="read-content">
+
+            <h1 class="read-title">{{ article.title }}</h1>
+
+            <p class="read-description">{{ article.des }}</p>
+
+            <!-- Author Section -->
+            <div class="read-author">
+
+                <div class="read-logo">
+                   <img src="{% static article.user_img %}" alt="">
+                </div>
+
+                <div class="read-info">
+                    <h3>{{ article.name }}</h3>
+
+                    <p>{{ article.date }}, {{ article.up_time }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

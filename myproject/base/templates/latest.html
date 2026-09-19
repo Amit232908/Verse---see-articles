@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="latest-section">
+
+        <div class="latest-header">
+                <span class="latest-label-text">
+                    // THE FEED
+                </span>
+        </div>
+
+        <h1 class="latest-title">
+            New Discoveries For Curious Minds
+        </h1>
+
+            <div class="latest-articles">
+
+            {% for article in articles %}
+
+            <article class="latest-article-card">
+
+                <a href="{% url 'article_detail' forloop.counter0 %}">
+                    <div class="latest-article-image">
+                    {% if article.image %}
+                        <img src="{% static article.image %}" alt="" title="click here to view article">
+                    {% endif %}
+                </div>
+                </a>
+
+                <div class="latest-article-content">
+
+                    <h2 class="latest-article-title">{{ article.title }}</h2>
+                    <p class="latest-article-description">{{ article.des|truncatechars:100 }}</p>
+
+                    <div class="latest-article-author">
+
+                        <div class="latest-author-info">
+                            <img src="{% static article.user_img %}" alt="Author Image">
+                            <span>{{ article.name }}</span>
+                        </div>
+
+                        <span class="latest-reading-time">{{ article.date }}, {{ article.up_time }}</span>
+
+                    </div>
+
+                </div>
+
+            </article>
+            {% endfor %}
+
+        </div>
+
+    </section>
+{% endblock %}
